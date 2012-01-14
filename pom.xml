@@ -7,13 +7,24 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>chatng</name>
-  <url>http://maven.apache.org</url>
+  <name>ChatNG</name>
+  <url>http://github.com/outerearthinteractive/chatNG</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-
+  <build>
+  	<resources>
+  		<resource>
+	  		<directory>
+	  		src/
+	  		</directory>
+	  		<includes>
+	  			<include>plugin.yml</include>
+	  		</includes>
+  		</resource>
+  	</resources>
+  </build>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -22,4 +33,12 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <description>A complete and up-to-date plugin covering a wide variety of chat functions for the Bukkit server platform.</description>
+  <ciManagement>
+  	<system>jenkins</system>
+  	<url>/</url>
+  </ciManagement>
+  <scm>
+  	<url>htttp://github.com/outerearthinteractive/chatNG</url>
+  </scm>
 </project>
