@@ -17,7 +17,7 @@
   	<resources>
   		<resource>
 	  		<directory>
-	  		src/
+	  		src
 	  		</directory>
 	  		<includes>
 	  			<include>plugin.yml</include>
