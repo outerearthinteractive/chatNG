@@ -1,4 +1,4 @@
-chatNG (a chat plugin that actually works)
+chatNG (Yet another chat plugin)
 ==========================================
 
 Feature Wishlist
