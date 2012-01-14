@@ -1,6 +1,17 @@
 chatNG (a chat plugin that actually works)
 ==========================================
 
+Feature Wishlist
+================
+Things I will probably do:
+
+* Channels
+* Chat API (Web chat / Mobile chat / Minecraft Admin?)
+* Permission Support
+* Moderation Support (Essentials hooks, maybe?)
+* Economy Support (Moderation fines)
+* Customizable Prefixes with Permission plugins and custom formats defined in configuration file.
+
 
 Building
 ========
