@@ -1,5 +1,7 @@
 package com.oei.chatng;
 
+import java.io.File;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import net.milkbowl.vault.economy.Economy;
@@ -20,23 +22,29 @@ public class PluginMain extends JavaPlugin {
 	private FileConfiguration config;
 
 	public void onDisable() {
+		pm = null;
+		permission = null;
+		economy = null;
+		listener = null;
+		config = null;
 		log.info(getDescription().getFullName() + " Disabled.");
 	}
 
 	public void onEnable() {
 		log.info(getDescription().getFullName() + " Initializing.");
+		setupConfig();
 		
-		if(this.setupPermissions() && this.setupEconomy()){
-			log.info("Hooked into economy and permissions plugins");
-			log.info("Permissions: "+permission.getName());
+		boolean permissionsEnabled = config.getBoolean("config.permissions");
+		if(config.getBoolean("config.economy")){
+			log.info("Hooking into Economy plugin");
 			log.info("Economy: "+economy.getName());
-			listener = new ChatListener(permission, economy, log);
-		} else {
-			log.info("Could not hook into Economy and Permissions.");
-			listener = new ChatListener(log);
+		} if(config.getBoolean("config.permissions")) {
+			log.info("Hooking into Permissions plugin");
+			log.info("Permissions: "+permission.getName());
 		}
+		ChatListener listener = new ChatListener(economy, permission, log, config);
 		pm = this.getServer().getPluginManager();
-		pm.registerEvent(Event.Type.PLAYER_CHAT, listener, Event.Priority.Lowest, this);
+		pm.registerEvent(Event.Type.PLAYER_CHAT, listener, Event.Priority.Highest, this);
 		
 	}
     private Boolean setupPermissions()
@@ -57,11 +65,10 @@ public class PluginMain extends JavaPlugin {
         return (economy != null);
     }
     private Boolean setupConfig(){
-    	try{
-    		config = getConfig();
-    	} catch (Exception e){
-    		return false;
-    	}
+    	log.info("Initializing Config");
+    	config = getConfig();
+    	config.options().copyDefaults(true);
+    	saveConfig();
     	return true;
     }
 }

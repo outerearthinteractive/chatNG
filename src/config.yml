@@ -1,2 +1,3 @@
-economy: false
-permissions: true
+config:
+  permissions: true
+  economy:  true
