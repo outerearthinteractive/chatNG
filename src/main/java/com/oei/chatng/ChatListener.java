@@ -10,17 +10,17 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerListener;
 
-public class NGChatListener extends PlayerListener {
+public class ChatListener extends PlayerListener {
 	private Economy economy;
 	private Permission permission;
 	private Logger log;
 	
-	public NGChatListener(Permission permission, Economy economy, Logger log) {
+	public ChatListener(Permission permission, Economy economy, Logger log) {
 		this.permission = permission;
 		this.economy = economy;
 		this.log = log;
 	}
-	public NGChatListener(Logger log){
+	public ChatListener(Logger log){
 		this.economy = null;
 		this.permission = null;
 		this.log = log;

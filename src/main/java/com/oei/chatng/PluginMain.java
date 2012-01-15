@@ -16,7 +16,7 @@ public class PluginMain extends JavaPlugin {
 	private Permission permission;
 	private Economy economy;
 	private PluginManager pm; 
-	private NGChatListener listener;
+	private ChatListener listener;
 	private FileConfiguration config;
 
 	public void onDisable() {
@@ -30,10 +30,10 @@ public class PluginMain extends JavaPlugin {
 			log.info("Hooked into economy and permissions plugins");
 			log.info("Permissions: "+permission.getName());
 			log.info("Economy: "+economy.getName());
-			listener = new NGChatListener(permission, economy, log);
+			listener = new ChatListener(permission, economy, log);
 		} else {
 			log.info("Could not hook into Economy and Permissions.");
-			listener = new NGChatListener(log);
+			listener = new ChatListener(log);
 		}
 		pm = this.getServer().getPluginManager();
 		pm.registerEvent(Event.Type.PLAYER_CHAT, listener, Event.Priority.Lowest, this);
